@@ -1,10 +1,12 @@
 jQuery(function() {
     // Set up the main Events Manager Application
-    window.DartsLeague = {};
-    DartsLeague.Models = {};
-	DartsLeague.Collections = {};
-	DartsLeague.Views = {};
-	DartsLeague.UILib = {};
+    window.DartsLeague = {
+        Controllers: {},
+        Models: {},
+        Collections: {},
+        Views: {},
+        UILib: {}
+    };
 	
 	/*********************************************************
 	* UI Lib: A set of views that we may need to repurpose. For now, this
@@ -476,5 +478,13 @@ jQuery(function() {
 		}
 				
 	});
+    
+    /***************************************************************
+     * Controllers
+     * 
+     * TourneysController: This will handle all the mediating for the top-
+     *    level tourneys events/views.
+     ***************************************************************/
+    DartsLeague.Controllers.TourneysController = {};
 	
 });
