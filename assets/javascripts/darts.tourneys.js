@@ -168,7 +168,44 @@ jQuery(function() {
      * TourneysController: This will handle all the mediating for the top-
      *    level tourneys events/views.
      ***************************************************************/
-    DartsLeague.Controllers.TourneysController = {};
+    DartsLeague.Controllers.TourneysController = {
+		tourneyManagerLayout: new DartsLeague.Views.TourneyManagerLayout(),
+		
+    	setup: function(options){
+			var tourneysListing = new DartsLeague.Views.TourneysListing({collection: DartsLeague.tourneyCollection});		
+			if(DartsLeague.TourneysApp.appMain){
+				
+				// First, we need to set up the main sections of our display.
+				DartsLeague.TourneysApp.appMain.show(this.tourneyManagerLayout);
+				
+				// Then, in the listing pane, we'll put up the tourneysListing.
+				this.tourneyManagerLayout.tourneyListing.show(tourneysListing );
+								
+				$("#main-content").layout({
+					applyDefaultStyles:   true,
+					center__paneSelector: ".outer-center",
+					spacing__open:        8,
+					spacing__closed:      12,
+					center__childOptions: {
+						center__paneSelector:  ".middle-center",
+						east__paneSelector:    ".middle-east",
+						west__paneSelector:    ".middle-west",
+						north__paneSelector:    ".middle-north",
+						south__paneSelector:    ".middle-south",
+						west__size:    250,
+						south__size:    25,
+						spacing__open:        8,
+						spacing__closed:        12,
+					}
+				});
+				$("#tourneys-listing ul").menu();
+				this.tourneyManagerIsShowing = true;
+			}
+		},
+		
+		showDetail: function(id){
+		}
+    };
     
     
     /***************************************************************
@@ -179,6 +216,11 @@ jQuery(function() {
      ***************************************************************/
     DartsLeague.Routers.TourneysRouter = Backbone.Marionette.AppRouter.extend({
         controller: DartsLeague.Controllers.TourneysController,
+        
+    	appRoutes: {
+			"": "setup",
+			"tourney/:id": "showDetail"
+		}
     });    
     
 });

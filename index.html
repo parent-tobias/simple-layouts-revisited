@@ -29,32 +29,7 @@
 					DartsLeague.tourneyCollection = new DartsLeague.Collections.Tourneys();
 					DartsLeague.tourneyCollection.fetch();
                     
-                    // Start the application's top-level regions
-                    var tourneyManager = new DartsLeague.Views.TourneyManagerLayout();
-                    DartsLeague.TourneysApp.appMain.show(tourneyManager);
-                    
-                    // Within that top-level region, show the listing of the tourneys
-    				tourneyManager.tourneyListing.show(new DartsLeague.Views.TourneysListing({collection: DartsLeague.tourneyCollection}));
-                    
-                    // At this point, our main app is up and running, so we can set up our layout.
-					$("#main-content").layout({
-						applyDefaultStyles:   true,
-						center__paneSelector: ".outer-center",
-						spacing__open:        8,
-						spacing__closed:      12,
-						center__childOptions: {
-							center__paneSelector:  ".middle-center",
-							east__paneSelector:    ".middle-east",
-							west__paneSelector:    ".middle-west",
-							north__paneSelector:    ".middle-north",
-							south__paneSelector:    ".middle-south",
-							west__size:    250,
-							south__size:    25,
-							spacing__open:        8,
-							spacing__closed:        12,
-						}
-					});
-                    
+                    DartsLeague.touneysRouter = new DartsLeague.Routers.TourneysRouter();
 				});
 				
 				DartsLeague.TourneysApp.start();
