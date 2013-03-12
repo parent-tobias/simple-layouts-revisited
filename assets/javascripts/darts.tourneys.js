@@ -125,15 +125,6 @@ jQuery(function() {
             tourneyDetails: "#tourney-manager-detail",
             status: "#tourney-manager-status"
         },
-    	
-		initialize: function(){
-    		var that=this;
-			
-			DartsLeague.TourneysApp.vent.on("selectedTourney:changed", function(myTourney){
-				var myTourneyDetails = new DartsLeague.Views.TourneyDetails({model: myTourney});
-				that.tourneyDetails.show(myTourneyDetails);
-			});
-		}
     });
      
     DartsLeague.Views.TourneyListing = Backbone.Marionette.ItemView.extend({
@@ -203,7 +194,12 @@ jQuery(function() {
 			}
 		},
 		
-		showDetail: function(id){
+    	showDetail: function(id){
+			// First, get the model, as we're given the ID on the URL
+			this.model = DartsLeague.tourneyCollection.get(id);
+
+            var tourneyDetails = new DartsLeague.Views.TourneyDetails({model: this.model});
+            this.tourneyManagerLayout.tourneyDetails.show(tourneyDetails );
 		}
     };
     
