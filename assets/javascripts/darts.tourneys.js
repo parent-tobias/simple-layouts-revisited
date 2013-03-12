@@ -160,6 +160,7 @@ jQuery(function() {
      *    level tourneys events/views.
      ***************************************************************/
     DartsLeague.Controllers.TourneysController = {
+        setupHasRun: false,
 		tourneyManagerLayout: new DartsLeague.Views.TourneyManagerLayout(),
 		
     	setup: function(options){
@@ -190,13 +191,15 @@ jQuery(function() {
 					}
 				});
 				$("#tourneys-listing ul").menu();
-				this.tourneyManagerIsShowing = true;
+				this.setupHasRun = true;
 			}
 		},
 		
     	showDetail: function(id){
 			// First, get the model, as we're given the ID on the URL
 			this.model = DartsLeague.tourneyCollection.get(id);
+            
+            if(!setupHasRun) { this.setup(); }
 
             var tourneyDetails = new DartsLeague.Views.TourneyDetails({model: this.model});
             this.tourneyManagerLayout.tourneyDetails.show(tourneyDetails );
