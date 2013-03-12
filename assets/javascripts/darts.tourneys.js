@@ -1,9 +1,13 @@
 jQuery(function() {
     // Set up the main Events Manager Application
-    window.DartsLeague = {};
-    DartsLeague.Models = {};
-	DartsLeague.Collections = {};
-	DartsLeague.Views = {};
+    window.DartsLeague = {
+        Routers: {},
+        Models: {},
+        Collections: {},
+        Views: {},
+        UILib: {},
+        Controllers: {}
+    };
 	
 	DartsLeague.TourneysApp = new Backbone.Marionette.Application({});
 	
@@ -158,4 +162,21 @@ jQuery(function() {
 		template: "#tourney-details-template"
 	});
 
+    /***************************************************************
+     * Controllers
+     * 
+     * TourneysController: This will handle all the mediating for the top-
+     *    level tourneys events/views.
+     ***************************************************************/
+    DartsLeague.Controllers.TourneysController = {};
+    
+    
+    /***************************************************************
+     * Routers
+     * 
+     * TourneysRouter: This will listen to URL changes, and route them to
+     *    the appropriate function.
+     ***************************************************************/
+    DartsLeague.Controllers.TourneysRouter = Backbone.Marionette.AppRouter.extend({});    
+    
 });
