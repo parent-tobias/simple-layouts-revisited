@@ -199,7 +199,7 @@ jQuery(function() {
 			// First, get the model, as we're given the ID on the URL
 			this.model = DartsLeague.tourneyCollection.get(id);
             
-            if(!setupHasRun) { this.setup(); }
+            if(!this.setupHasRun) { this.setup(); }
 
             var tourneyDetails = new DartsLeague.Views.TourneyDetails({model: this.model});
             this.tourneyManagerLayout.tourneyDetails.show(tourneyDetails );

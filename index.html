@@ -27,7 +27,7 @@
 				DartsLeague.TourneysApp.addInitializer(function(options) {
                     // Fetch and set up the Tourney Collection
 					DartsLeague.tourneyCollection = new DartsLeague.Collections.Tourneys();
-					DartsLeague.tourneyCollection.fetch();
+					DartsLeague.tourneyCollection.fetch({async: false});
                     
                     DartsLeague.touneysRouter = new DartsLeague.Routers.TourneysRouter();
 				});
