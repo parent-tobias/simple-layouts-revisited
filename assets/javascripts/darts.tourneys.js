@@ -1,6 +1,7 @@
 jQuery(function() {
     // Set up the main Events Manager Application
     window.DartsLeague = {
+        Routers: {},
         Controllers: {},
         Models: {},
         Collections: {},
@@ -487,4 +488,13 @@ jQuery(function() {
      ***************************************************************/
     DartsLeague.Controllers.TourneysController = {};
 	
+    
+    /***************************************************************
+     * Routers
+     * 
+     * TourneysRouter: This will listen to URL changes, and route them to
+     *    the appropriate function.
+     ***************************************************************/
+    DartsLeague.Controllers.TourneysRouter = Backbone.Marionette.AppRouter.extend({});
+    
 });
