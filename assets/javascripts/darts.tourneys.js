@@ -177,6 +177,8 @@ jQuery(function() {
      * TourneysRouter: This will listen to URL changes, and route them to
      *    the appropriate function.
      ***************************************************************/
-    DartsLeague.Controllers.TourneysRouter = Backbone.Marionette.AppRouter.extend({});    
+    DartsLeague.Routers.TourneysRouter = Backbone.Marionette.AppRouter.extend({
+        controller: DartsLeague.Controllers.TourneysController,
+    });    
     
 });
