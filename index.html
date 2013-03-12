@@ -22,7 +22,7 @@
         <footer></footer>
         <div id="modal-dialog"></div>
 
-    	<script type="text/javascript">
+        <script type="text/javascript">
 			$(document).ready(function(){
 				DartsLeague.TourneysApp.addInitializer(function(options) {
                     // Fetch and set up the Tourney Collection
@@ -37,7 +37,7 @@
     				tourneyManager.tourneyListing.show(new DartsLeague.Views.TourneysListing({collection: DartsLeague.tourneyCollection}));
                     
                     // At this point, our main app is up and running, so we can set up our layout.
-					$("#mainContent").layout({
+					$("#main-content").layout({
 						applyDefaultStyles:   true,
 						center__paneSelector: ".outer-center",
 						spacing__open:        8,
@@ -75,7 +75,7 @@
             <a href="#" id="tourney<%=id %>"><%= title %></a>
         </script>
     		
-		<script type="text/template" id="tourney-specific-details-template">
+		<script type="text/template" id="tourney-details-template">
 			<hgroup>
 				<h2><%= title %>: <%= location %></h2>
 		   		<h3><%= starts %></h3>
